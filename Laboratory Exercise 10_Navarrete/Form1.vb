@@ -46,7 +46,7 @@ Public Class Form1
 
         Dim print As String = "Numbers in the list:" & Environment.NewLine
 
-        Dim sorted = numbers.OrderByDescending(Function(x) x)
+        Dim sorted = numbers.OrderBy(Function(n) n)
 
         For Each item In sorted
             print += item & Environment.NewLine
