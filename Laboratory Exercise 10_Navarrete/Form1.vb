@@ -16,8 +16,8 @@ Public Class Form1
 
             Using writer As New StreamWriter(filepath, True)
                 writer.WriteLine(input.Text)
+                ListBox1.Items.Add(input.Text)
             End Using
-
 
             numbers.Clear()
             Using reader As New StreamReader(filepath)
@@ -28,35 +28,32 @@ Public Class Form1
                     If Integer.TryParse(line, Nothing) Then
                         numbers.Add(Convert.ToInt32(line))
                     End If
+
                 End While
             End Using
 
-            MessageBox.Show($"{input.Text} saved successfully.")
         Else
             MessageBox.Show("Please enter a valid number.")
-
         End If
 
     End Sub
 
-    Private Sub ShowList_Click(sender As Object, e As EventArgs) Handles ShowList.Click
+    Private Sub ShowList_Click(sender As Object, e As EventArgs) Handles SortList.Click
 
-
-
-
-        Dim print As String = "Numbers in the list:" & Environment.NewLine
 
         Dim sorted = numbers.OrderBy(Function(n) n)
 
+        ListBox1.Items.Clear()
         For Each item In sorted
-            print += item & Environment.NewLine
+            ListBox1.Items.Add(item)
         Next
 
-        MessageBox.Show(print)
+
     End Sub
 
     Private Sub ClearList_Click(sender As Object, e As EventArgs) Handles ClearList.Click
         numbers.Clear()
         File.WriteAllText(filepath, "")
+        ListBox1.Items.Clear()
     End Sub
 End Class
