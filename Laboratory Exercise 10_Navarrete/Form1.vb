@@ -9,7 +9,6 @@ Public Class Form1
     Dim filepath As String = "numbers.txt"
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-
         Dim verify As Boolean = Double.TryParse(input.Text, Nothing)
 
         If verify Then
